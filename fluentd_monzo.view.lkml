@@ -38,20 +38,25 @@ view: fluentd_monzo {
     group_label: "Transaction Details"
     label: "Transaction Date"
     type: time
+    hidden: yes
     timeframes: [
-      raw,
-      time,
-      day_of_week,
-      day_of_month,
-      day_of_year,
-      date,
-      week,
-      week_of_year,
-      month,
-      month_name,
-      month_num,
-      quarter,
-      year
+      date
+    ]
+    sql: ${TABLE}.created ;;
+  }
+
+  dimension_group: time {
+    group_label: "Transaction Time"
+    label: "Transaction Time"
+    type: time
+    timeframes: [
+      time_of_day,
+      hour,
+      hour3,
+      hour4,
+      hour6,
+      minute15,
+      minute30
     ]
     sql: ${TABLE}.created ;;
   }
@@ -281,49 +286,9 @@ dimension: area_code {
   }
 
 
-  dimension_group: settled {
-    group_label: "Transaction Details"
-   label: "Transaction Settled Date"
-    type: time
-    timeframes: [
-      raw,
-      time,
-      day_of_week,
-      day_of_month,
-      day_of_year,
-      date,
-      week,
-      week_of_year,
-      month,
-      month_name,
-      month_num,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.settled ;;
-  }
 
-  dimension_group: updated {
-    group_label: "Transaction Details"
-    label: "Transaction Updated Date"
-    type: time
-    timeframes: [
-      raw,
-      time,
-      day_of_week,
-      day_of_month,
-      day_of_year,
-      date,
-      week,
-      week_of_year,
-      month,
-      month_name,
-      month_num,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.updated ;;
-  }
+
+
 
   measure: count {
     label: "Transaction Count"

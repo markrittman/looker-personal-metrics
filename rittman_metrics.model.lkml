@@ -38,5 +38,16 @@ explore: date_dim {
     type: left_outer
     sql_on: ${date_dim.date_date} = ${fluentd_weather.date_date};;
     relationship: one_to_many
+
+  }
+  join: fluentd_daily_health_stats {
+    type: left_outer
+    sql_on: ${date_dim.date_date} = ${fluentd_daily_health_stats.date_date};;
+    relationship: one_to_one
+  }
+  join: fluentd_strava {
+    type: left_outer
+    sql_on: ${date_dim.date_date} = ${fluentd_strava.start_date_local_date};;
+    relationship: one_to_many
   }
   }

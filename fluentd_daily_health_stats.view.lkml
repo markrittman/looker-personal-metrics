@@ -1,10 +1,8 @@
 view: fluentd_daily_health_stats {
+  view_label: "Health and Fitness"
   sql_table_name: personal_metrics.fluentd_daily_health_stats ;;
 
-  dimension: date_of_activity {
-    type: string
-    sql: ${TABLE}.DateOfActivity ;;
-  }
+
 
   dimension_group: date {
     type: time
@@ -15,58 +13,70 @@ view: fluentd_daily_health_stats {
       week,
       month,
       quarter,
-      year
-    ]
-    sql: ${TABLE}.date_time ;;
+      year]
+
+    sql: ifnull(parse_timestamp('%B %d, %Y',ltrim(${TABLE}.dateOfActivity)),${TABLE}.date_time) ;;
   }
 
-  dimension: fairly_active_minutes {
-    type: string
-    sql: ${TABLE}.FairlyActiveMinutes ;;
+  measure: fairly_active_minutes {
+    group_label: "Activity Hours"
+    label: "Fairly Active Hours"
+    type: sum
+    sql: round(${TABLE}.FairlyActiveMinutes/60,2) ;;
   }
 
-  dimension: lightly_active_minutes {
-    type: string
-    sql: ${TABLE}.LightlyActiveMinutes ;;
+  measure: lightly_active_minutes {
+    group_label: "Activity Hours"
+
+    label: "Lightly Active Hours"
+
+    type: sum
+    sql: round(${TABLE}.LightlyActiveMinutes/60,2) ;;
   }
 
-  dimension: sedentary_minutes {
-    type: string
-    sql: ${TABLE}.SedentaryMinutes ;;
+  measure: sedentary_minutes {
+    group_label: "Activity Hours"
+
+    label: "Sedentary Active Hours"
+    type: sum
+    sql: round(${TABLE}.SedentaryMinutes/60,2) ;;
   }
 
   dimension: source {
+    label: "Fitness Data Source"
     type: string
     sql: ${TABLE}.source ;;
   }
 
-  dimension: total_calories_burned {
-    type: string
+  measure: total_calories_burned {
+    group_label: "Workout Metrics"
+
+    label: "Total Calories Burned"
+    type: sum
     sql: ${TABLE}.TotalCaloriesBurned ;;
   }
 
-  dimension: total_distance_covered {
-    type: string
-    sql: ${TABLE}.TotalDistanceCovered ;;
+  measure: total_distance_covered {
+    group_label: "Workout Metrics"
+
+    label: "Total Distance Covered Km"
+    type: sum
+    sql: round(${TABLE}.TotalDistanceCovered/1000,2) ;;
   }
 
-  dimension: total_distance_covered_unit {
-    type: string
-    sql: ${TABLE}.TotalDistanceCoveredUnit ;;
-  }
-
-  dimension: total_steps {
-    type: number
+  measure: total_steps {
+    group_label: "Workout Metrics"
+    label: "Total Steps"
+    type: sum
     sql: ${TABLE}.TotalSteps ;;
   }
 
   dimension: very_active_minutes {
+    group_label: "Activity Hours"
+    label: "Very Active Hours"
     type: string
-    sql: ${TABLE}.VeryActiveMinutes ;;
+    sql: round(${TABLE}.VeryActiveMinutes/60,2) ;;
   }
 
-  measure: count {
-    type: count
-    drill_fields: []
-  }
+
 }

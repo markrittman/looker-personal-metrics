@@ -1,4 +1,5 @@
 view: fluentd_weather {
+  view_label: "Local Weather"
   sql_table_name: personal_metrics.fluentd_weather ;;
 
   dimension: condition {
@@ -7,22 +8,19 @@ view: fluentd_weather {
     sql: ${TABLE}.condition ;;
   }
 
+
+
   dimension_group: date {
     type: time
     timeframes: [
-      raw,
-      time,
-      day_of_week,
-      day_of_month,
-      day_of_year,
       date,
-      week,
-      week_of_year,
-      month,
-      month_name,
-      month_num,
-      quarter,
-      year
+      time_of_day,
+      hour,
+      hour3,
+      hour4,
+      hour6,
+      minute15,
+      minute30
     ]
     sql: ${TABLE}.date_time ;;
   }
@@ -59,6 +57,7 @@ view: fluentd_weather {
 
   dimension: wind_speed_kph {
     label: "Wind Speed Kph"
+    type: tier
     tiers: [,0,5,10,15,20,25,30,40,50]
     style: integer
     sql: ${TABLE}.wind_speed_kph ;;
