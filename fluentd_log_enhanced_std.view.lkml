@@ -1,14 +1,32 @@
-view: fluentd_log_enhanced {
-  sql_table_name: personal_metrics.fluentd_log_enhanced ;;
+view: fluentd_log_enhanced_std {
+  sql_table_name: personal_metrics.fluentd_log_enhanced_std ;;
 
   dimension_group: date {
     type: time
     timeframes: [
       raw,
       time,
+      hour,
+      hour3,
+      hour4,
+      hour6,
+      hour12,
+      hour_of_day,
+      time_of_day,
+      minute,
+      minute5,
+      minute10,
+      minute15,
+      minute30,
+      day_of_week,
+      day_of_month,
+      day_of_year,
       date,
       week,
+      week_of_year,
       month,
+      month_name,
+      month_num,
       quarter,
       year
     ]
@@ -33,6 +51,11 @@ view: fluentd_log_enhanced {
   dimension: metric {
     type: string
     sql: ${TABLE}.metric ;;
+  }
+
+  dimension: raw_value {
+    type: string
+    sql: ${TABLE}.raw_value ;;
   }
 
   dimension: room {

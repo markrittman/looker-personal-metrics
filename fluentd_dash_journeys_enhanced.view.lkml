@@ -2,13 +2,32 @@ view: fluentd_dash_journeys_enhanced {
   sql_table_name: personal_metrics.fluentd_dash_journeys_enhanced ;;
 
   dimension_group: date {
+    label: "Journey Start Date + Time"
     type: time
     timeframes: [
-      raw,
+       raw,
       time,
+      hour,
+      hour3,
+      hour4,
+      hour6,
+      hour12,
+      hour_of_day,
+      time_of_day,
+      minute,
+      minute5,
+      minute10,
+      minute15,
+      minute30,
+      day_of_week,
+      day_of_month,
+      day_of_year,
       date,
       week,
+      week_of_year,
       month,
+      month_name,
+      month_num,
       quarter,
       year
     ]
@@ -36,13 +55,32 @@ view: fluentd_dash_journeys_enhanced {
   }
 
   dimension_group: end_date {
+    label: "Journey End Date + Time"
     type: time
     timeframes: [
-      raw,
+       raw,
       time,
+      hour,
+      hour3,
+      hour4,
+      hour6,
+      hour12,
+      hour_of_day,
+      time_of_day,
+      minute,
+      minute5,
+      minute10,
+      minute15,
+      minute30,
+      day_of_week,
+      day_of_month,
+      day_of_year,
       date,
       week,
+      week_of_year,
       month,
+      month_name,
+      month_num,
       quarter,
       year
     ]

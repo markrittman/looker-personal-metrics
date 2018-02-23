@@ -25,18 +25,36 @@ explore: date_dim {
     sql_on: ${date_dim.date_date} = ${fluentd_monzo.created_date} ;;
     relationship: many_to_many
   }
+  join: fluentd_log_enhanced_std {
+    type: left_outer
+    sql_on: ${date_dim.date_date} = ${fluentd_log_enhanced_std.date_time} ;;
+    relationship: one_to_many
+  }
   join: fluentd_uber_rides {
     type: left_outer
     sql_on: ${date_dim.date_date} = ${fluentd_uber_rides.date_date} ;;
     relationship: many_to_many
   }
+  join: fluentd_communications_std {
+    type: left_outer
+    sql_on: ${date_dim.date_time} = ${fluentd_communications_std.date_time} ;;
+    relationship: one_to_many
+  }
   join: fluentd_worktime_metrics {
     type: left_outer
     sql_on: ${date_dim.date_date} = ${fluentd_worktime_metrics.date_date} ;;
     relationship: many_to_many
-  }join: fluentd_weather {
+  }
+  join: fluentd_dash_journeys_enhanced {
     type: left_outer
-    sql_on: ${date_dim.date_date} = ${fluentd_weather.date_date};;
+    sql_on: ${date_dim.date_time} = ${fluentd_dash_journeys_enhanced.date_time} ;;
+    relationship: one_to_many
+  }
+
+
+  join: fluentd_weather {
+    type: left_outer
+    sql_on: ${date_dim.date_time} = ${fluentd_weather.date_time};;
     relationship: one_to_many
 
   }
@@ -47,7 +65,18 @@ explore: date_dim {
   }
   join: fluentd_strava {
     type: left_outer
-    sql_on: ${date_dim.date_date} = ${fluentd_strava.start_date_local_date};;
+    sql_on: ${date_dim.date_time} = ${fluentd_strava.start_date_local_time};;
+    relationship: one_to_many
+  }
+
+  join: strava_efforts {
+    type: left_outer
+    sql_on: ${date_dim.date_time} = ${strava_efforts.effort_start_date_time};;
+    relationship: one_to_many
+  }
+  join: fluentd_owntracks_geolocated {
+    type: left_outer
+    sql_on: ${date_dim.date_time} = ${fluentd_owntracks_geolocated.date_time_time};;
     relationship: one_to_many
   }
   }

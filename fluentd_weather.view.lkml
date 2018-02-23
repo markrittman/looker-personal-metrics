@@ -20,7 +20,8 @@ view: fluentd_weather {
       hour4,
       hour6,
       minute15,
-      minute30
+      minute30,
+      time
     ]
     sql: ${TABLE}.date_time ;;
   }

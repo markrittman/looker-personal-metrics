@@ -1,5 +1,6 @@
 view: fluentd_strava {
   sql_table_name: personal_metrics.fluentd_strava ;;
+  view_label: "Strava Activities"
 
   dimension: id {
     primary_key: yes
@@ -173,6 +174,8 @@ view: fluentd_strava {
     timeframes: [
       raw,
       time,
+      time_of_day,
+      hour_of_day,
       date,
       week,
       month,
@@ -187,6 +190,8 @@ view: fluentd_strava {
     timeframes: [
       raw,
       time,
+      time_of_day,
+      hour_of_day,
       date,
       week,
       month,
@@ -196,28 +201,16 @@ view: fluentd_strava {
     sql: ${TABLE}.start_date_local ;;
   }
 
-  dimension: start_latitude {
-    type: number
-    sql: ${TABLE}.start_latitude ;;
+  dimension: start_location {
+    type: location
+    sql_latitude: ${TABLE}.start_latitude ;;
+    sql_longitude: ${TABLE}.start_longitude ;;
   }
 
-  dimension: start_latlng {
-    type: string
-    sql: ${TABLE}.start_latlng ;;
-  }
 
-  dimension: start_longitude {
-    type: number
-    sql: ${TABLE}.start_longitude ;;
-  }
 
-  dimension: string_field_47 {
-    type: string
-    sql: ${TABLE}.string_field_47 ;;
-  }
-
-  dimension: suffer_score {
-    type: number
+  measure: suffer_score {
+    type: average
     sql: ${TABLE}.suffer_score ;;
   }
 
@@ -226,8 +219,8 @@ view: fluentd_strava {
     sql: ${TABLE}.timezone ;;
   }
 
-  dimension: total_elevation_gain {
-    type: number
+  measure: total_elevation_gain {
+    type: average
     sql: ${TABLE}.total_elevation_gain ;;
   }
 
