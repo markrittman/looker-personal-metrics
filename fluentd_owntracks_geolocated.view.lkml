@@ -1,6 +1,6 @@
 view: fluentd_owntracks_geolocated {
   sql_table_name: personal_metrics.fluentd_owntracks_geolocated ;;
-
+  view_label: "Locations Visited"
 
   dimension: alt {
     label: "Altitude"
@@ -74,12 +74,27 @@ view: fluentd_owntracks_geolocated {
     timeframes: [
       raw,
       time,
+      hour,
+      hour3,
+      hour4,
+      hour6,
+      hour12,
+      hour_of_day,
+      time_of_day,
+      minute,
       minute5,
       minute10,
       minute15,
+      minute30,
+      day_of_week,
+      day_of_month,
+      day_of_year,
       date,
       week,
+      week_of_year,
       month,
+      month_name,
+      month_num,
       quarter,
       year
     ]

@@ -45,16 +45,26 @@ explore: date_dim {
     sql_on: ${date_dim.date_date} = ${fluentd_worktime_metrics.date_date} ;;
     relationship: many_to_many
   }
+  join: fluentd_drilltodetail_events {
+    type: left_outer
+    sql_on: ${date_dim.date_date} = ${fluentd_drilltodetail_events.date_date} ;;
+    relationship: many_to_many
+  }
   join: fluentd_dash_journeys_enhanced {
     type: left_outer
     sql_on: ${date_dim.date_time} = ${fluentd_dash_journeys_enhanced.date_time} ;;
+    relationship: one_to_many
+  }
+  join: fluentd_activities {
+    type: left_outer
+    sql_on: ${date_dim.date_time} = ${fluentd_activities.end_time} ;;
     relationship: one_to_many
   }
 
 
   join: fluentd_weather {
     type: left_outer
-    sql_on: ${date_dim.date_time} = ${fluentd_weather.date_time};;
+    sql_on: ${date_dim.date_hour4} = ${fluentd_weather.date_hour4};;
     relationship: one_to_many
 
   }
@@ -63,9 +73,16 @@ explore: date_dim {
     sql_on: ${date_dim.date_date} = ${fluentd_daily_health_stats.date_date};;
     relationship: one_to_one
   }
+
+  join: fluentd_weighings {
+    type: left_outer
+    sql_on: ${date_dim.date_date} = ${fluentd_weighings.date_date};;
+    relationship: one_to_many
+  }
+
   join: fluentd_strava {
     type: left_outer
-    sql_on: ${date_dim.date_time} = ${fluentd_strava.start_date_local_time};;
+    sql_on: ${date_dim.date_minute15} = ${fluentd_activities.start_minute15};;
     relationship: one_to_many
   }
 
@@ -77,6 +94,11 @@ explore: date_dim {
   join: fluentd_owntracks_geolocated {
     type: left_outer
     sql_on: ${date_dim.date_time} = ${fluentd_owntracks_geolocated.date_time_time};;
+    relationship: one_to_many
+  }
+  join: fluentd_locations {
+    type: left_outer
+    sql_on: ${date_dim.date_time} = ${fluentd_locations.start_time};;
     relationship: one_to_many
   }
   }

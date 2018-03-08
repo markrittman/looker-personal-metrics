@@ -1,5 +1,6 @@
 view: fluentd_log_enhanced_std {
   sql_table_name: personal_metrics.fluentd_log_enhanced_std ;;
+  view_label: "Smart Home"
 
   dimension_group: date {
     type: time

@@ -1,5 +1,7 @@
 view: fluentd_dash_journeys_enhanced {
   sql_table_name: personal_metrics.fluentd_dash_journeys_enhanced ;;
+  view_label: "Car Journeys"
+
 
   dimension_group: date {
     label: "Journey Start Date + Time"
