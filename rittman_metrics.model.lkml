@@ -35,6 +35,11 @@ explore: date_dim {
     sql_on: ${date_dim.date_date} = ${fluentd_uber_rides.date_date} ;;
     relationship: many_to_many
   }
+  join: v_car_trips {
+    type: left_outer
+    sql_on: ${date_dim.date_date} = ${v_car_trips.journey_start_date_date} ;;
+    relationship: one_to_many
+  }
   join: fluentd_communications_std {
     type: left_outer
     sql_on: ${date_dim.date_time} = ${fluentd_communications_std.date_time} ;;
@@ -50,11 +55,7 @@ explore: date_dim {
     sql_on: ${date_dim.date_date} = ${fluentd_drilltodetail_events.date_date} ;;
     relationship: many_to_many
   }
-  join: fluentd_dash_journeys_enhanced {
-    type: left_outer
-    sql_on: ${date_dim.date_time} = ${fluentd_dash_journeys_enhanced.date_time} ;;
-    relationship: one_to_many
-  }
+
   join: fluentd_activities {
     type: left_outer
     sql_on: ${date_dim.date_time} = ${fluentd_activities.end_time} ;;
