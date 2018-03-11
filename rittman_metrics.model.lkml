@@ -55,9 +55,9 @@ explore: date_dim {
     sql_on: ${date_dim.date_date} = ${fluentd_worktime_metrics.date_date} ;;
     relationship: many_to_many
   }
-  join: fluentd_drilltodetail_events {
+  join: fluentd_mixpanel_podcast_plays {
     type: left_outer
-    sql_on: ${date_dim.date_minute5} = ${fluentd_drilltodetail_events.date_minute5} ;;
+    sql_on: ${date_dim.date_minute5} = ${fluentd_mixpanel_podcast_plays.date_minute5} ;;
     relationship: many_to_many
   }
 
