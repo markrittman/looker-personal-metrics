@@ -1,6 +1,6 @@
 view: fluentd_strava {
   sql_table_name: personal_metrics.fluentd_strava ;;
-  view_label: "Strava Activities"
+  view_label: "Strava Cycling Workouts"
 
   dimension: id {
     primary_key: yes

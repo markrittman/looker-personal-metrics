@@ -1,6 +1,6 @@
 view: fluentd_log_enhanced_std {
   sql_table_name: personal_metrics.fluentd_log_enhanced_std ;;
-  view_label: "Smart Home"
+  view_label: "SmartThings Devices"
 
   dimension_group: date {
     type: time
@@ -32,6 +32,12 @@ view: fluentd_log_enhanced_std {
       year
     ]
     sql: ${TABLE}.date_time ;;
+  }
+
+  dimension: pk {
+    primary_key: yes
+    hidden: yes
+    sql: concat(cast(${TABLE}.date_time as string),sql: ${TABLE}.deviceName) ;;
   }
 
   dimension: device {

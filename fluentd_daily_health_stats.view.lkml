@@ -1,5 +1,5 @@
 view: fluentd_daily_health_stats {
-  view_label: "Health and Fitness"
+  view_label: "Fitbit Daily Activity Stats"
   sql_table_name: personal_metrics.fluentd_daily_health_stats ;;
 
 

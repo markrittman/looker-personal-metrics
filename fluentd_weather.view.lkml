@@ -1,5 +1,5 @@
 view: fluentd_weather {
-  view_label: "Local Weather"
+  view_label: "Weather Underground Local Climate"
   sql_table_name: personal_metrics.fluentd_weather ;;
 
   dimension: condition {

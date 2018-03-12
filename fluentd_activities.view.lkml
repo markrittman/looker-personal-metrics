@@ -1,6 +1,6 @@
 view: fluentd_activities {
   sql_table_name: personal_metrics.fluentd_activities ;;
-  view_label: "Workout Activities"
+  view_label: "Fitbit Workouts"
 
   dimension: id {
     primary_key: yes

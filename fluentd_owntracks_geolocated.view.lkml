@@ -1,6 +1,6 @@
 view: fluentd_owntracks_geolocated {
   sql_table_name: personal_metrics.fluentd_owntracks_geolocated ;;
-  view_label: "Locations Visited"
+  view_label: "Owntracks Geo-Tracking"
 
   dimension: alt {
     label: "Altitude"

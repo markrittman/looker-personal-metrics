@@ -1,6 +1,6 @@
 view: fluentd_communications_std {
   sql_table_name: personal_metrics.fluentd_communications_std ;;
-  view_label: "Communications"
+  view_label: "Email, iMessage, Slack & Social Media"
 
   dimension: categoryname {
     label: "Categorization"

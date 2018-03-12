@@ -1,5 +1,5 @@
 view: fluentd_worktime_metrics {
-  view_label: "Productivity Metrics"
+  view_label: "Rescuetime Productivity Metrics"
   sql_table_name: personal_metrics.fluentd_worktime_metrics ;;
 
   dimension: id {

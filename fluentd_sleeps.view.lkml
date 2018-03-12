@@ -1,5 +1,6 @@
 view: fluentd_sleeps {
   sql_table_name: personal_metrics.fluentd_sleeps ;;
+  view_label: "Fitbit Sleep Tracking"
 
   dimension: id {
     primary_key: yes

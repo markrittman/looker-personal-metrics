@@ -1,6 +1,6 @@
 view: fluentd_google_analytics {
   sql_table_name: personal_metrics.fluentd_google_analytics ;;
-  view_label: "Web Analytics"
+  view_label: "GA Site Analytics"
 
   measure: avg_page_load_time {
     type: average

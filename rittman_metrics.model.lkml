@@ -92,11 +92,7 @@ explore: date_dim {
     relationship: one_to_many
   }
 
-  join: strava_efforts {
-    type: left_outer
-    sql_on: ${date_dim.date_time} = ${strava_efforts.effort_start_date_time};;
-    relationship: one_to_many
-  }
+
   join: fluentd_owntracks_geolocated {
     type: left_outer
     sql_on: ${date_dim.date_time} = ${fluentd_owntracks_geolocated.date_time_time};;

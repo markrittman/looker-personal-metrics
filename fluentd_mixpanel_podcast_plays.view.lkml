@@ -1,5 +1,6 @@
 view: fluentd_mixpanel_podcast_plays {
   sql_table_name: personal_metrics.fluentd_mixpanel_podcast_plays ;;
+  view_label: "Mixpanel Podcast Site Events"
 
   dimension: country {
     type: string

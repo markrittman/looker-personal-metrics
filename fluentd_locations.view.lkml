@@ -1,6 +1,6 @@
 view: fluentd_locations {
   sql_table_name: personal_metrics.fluentd_locations ;;
-  view_label: "Places Visited"
+  view_label: "Moves Places Visited"
 
   dimension: id {
     primary_key: yes
