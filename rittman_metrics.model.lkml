@@ -37,7 +37,7 @@ explore: date_dim {
   }
   join: v_car_trips {
     type: left_outer
-    sql_on: ${date_dim.date_date} = ${v_car_trips.journey_start_date_date} ;;
+    sql_on: ${date_dim.date_minute5} = ${v_car_trips.journey_start_date_minute5} ;;
     relationship: one_to_many
   }
   join: fluentd_communications_std {

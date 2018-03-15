@@ -37,7 +37,7 @@ view: fluentd_log_enhanced_std {
   dimension: pk {
     primary_key: yes
     hidden: yes
-    sql: concat(cast(${TABLE}.date_time as string),sql: ${TABLE}.deviceName) ;;
+    sql: concat(cast(${TABLE}.date_time as string), ${TABLE}.deviceName) ;;
   }
 
   dimension: device {
@@ -70,8 +70,8 @@ view: fluentd_log_enhanced_std {
     sql: ${TABLE}.room ;;
   }
 
-  dimension: value {
-    type: number
+  measure: value {
+    type: average
     sql: ${TABLE}.value ;;
   }
 

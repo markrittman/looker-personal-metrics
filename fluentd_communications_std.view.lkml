@@ -98,9 +98,9 @@ view: fluentd_communications_std {
     sql: ${TABLE}.sentimentmagnitude ;;
   }
 
-  dimension: sentimentscore {
+  measure: sentimentscore {
     label: "Sentiment Score"
-    type: number
+    type: average
     sql: ${TABLE}.sentimentscore ;;
   }
 
