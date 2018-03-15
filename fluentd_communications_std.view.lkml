@@ -96,13 +96,13 @@ view: fluentd_communications_std {
   measure: sentimentmagnitude {
     label: "Sentiment Magnitude"
     type: number
-    sql: ${TABLE}.sentimentmagnitude ;;
+    sql: round(${TABLE}.sentimentmagnitude,2) ;;
   }
 
   measure: sentimentscore {
     label: "Sentiment Score"
     type: average
-    sql: ${TABLE}.sentimentscore ;;
+    sql: round(${TABLE}.sentimentscore,2) ;;
   }
 
   dimension: type {
