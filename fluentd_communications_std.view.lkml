@@ -44,8 +44,9 @@ view: fluentd_communications_std {
     type: string
     hidden: yes
     primary_key: yes
-    sql: concat(concat(concat(cast(${TABLE}.date_time as string),${TABLE}.post_author),${post_title}),${post_recipient}) ;;
-  }
+    sql: concat(cast(${TABLE}.date_time as string),${TABLE}.post_body);;
+
+}
 
   dimension: entityname {
     label: "Entities"
