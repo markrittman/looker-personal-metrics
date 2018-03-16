@@ -103,4 +103,9 @@ explore: date_dim {
     sql_on: ${date_dim.date_time} = ${fluentd_locations.start_time};;
     relationship: one_to_many
   }
+  join: fluentd_asana_tasks {
+    type: left_outer
+    sql_on: ${date_dim.date_date} = ${fluentd_asana_tasks.date_time_date};;
+    relationship: one_to_many
+    }
   }
