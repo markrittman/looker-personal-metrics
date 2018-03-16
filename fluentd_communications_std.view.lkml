@@ -101,6 +101,7 @@ view: fluentd_communications_std {
 
   measure: sentimentscore {
     label: "Sentiment Score"
+    value_format: "0.00"
     type: average
     sql: round(${TABLE}.sentimentscore,2) ;;
   }
