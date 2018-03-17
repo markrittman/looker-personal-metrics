@@ -92,17 +92,12 @@ explore: date_dim {
     relationship: one_to_many
   }
 
+ join: fluentd_geolocation {
+   type: left_outer
+  sql_on: ${date_dim.date_minute5} = ${fluentd_geolocation.date_minute5} ;;
+  relationship: one_to_many
+  }
 
-  join: fluentd_owntracks_geolocated {
-    type: left_outer
-    sql_on: ${date_dim.date_time} = ${fluentd_owntracks_geolocated.date_time_time};;
-    relationship: one_to_many
-  }
-  join: fluentd_locations {
-    type: left_outer
-    sql_on: ${date_dim.date_time} = ${fluentd_locations.start_time};;
-    relationship: one_to_many
-  }
   join: fluentd_asana_tasks {
     type: left_outer
     sql_on: ${date_dim.date_date} = ${fluentd_asana_tasks.date_time_date};;

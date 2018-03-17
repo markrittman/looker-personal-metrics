@@ -143,7 +143,7 @@ view: v_car_trips {
     sql: ${TABLE}.StartAddress ;;
   }
 
-  dimension: start_latitude {
+  dimension: start_location {
     type: location
     sql_latitude: ${TABLE}.StartLatitude ;;
     sql_longitude: ${TABLE}.StartLongitude ;;
