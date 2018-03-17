@@ -1,6 +1,6 @@
 view: fluentd_weather {
   view_label: "Weather Underground Local Climate"
-  sql_table_name: personal_metrics.fluentd_weather ;;
+  sql_table_name: personal_metrics.fluentd_weather_offsets ;;
 
   dimension: condition {
     label: "Weather Condition"
@@ -75,4 +75,51 @@ view: fluentd_weather {
       type: average
       sql: ${TABLE}.wind_speed_kph  ;;
   }
+
+  measure: avg_wind_speed_kph_month_ago {
+    label: "Avg Wind Speed Kph (Month Ago)"
+    type: average
+    sql: ${TABLE}.wind_speed_kph_month_ago  ;;
+  }
+
+  measure: avg_temp_c_month_ago {
+    label: "Avg Temp C (Month Ago)"
+    type: average
+    sql: ${TABLE}.wind_speed_kph_month_ago  ;;
+  }
+
+  measure: avg_wind_speed_kph_3month_ago {
+    label: "Avg Wind Speed Kph (Three Months Ago)"
+    type: average
+    sql: ${TABLE}.wind_speed_kph_3month_ago  ;;
+  }
+
+  measure: avg_temp_c_3month_ago {
+    label: "Avg Temp C (Three Months Ago)"
+    type: average
+    sql: ${TABLE}.wind_speed_kph_3month_ago  ;;
+  }
+
+  measure: avg_wind_speed_kph_6month_ago {
+    label: "Avg Wind Speed Kph (Six Months Ago)"
+    type: average
+    sql: ${TABLE}.wind_speed_kph_6month_ago  ;;
+  }
+
+  measure: avg_temp_c_6month_ago {
+    label: "Avg Temp C (Six Months Ago)"
+    type: average
+    sql: ${TABLE}.wind_speed_kph_6month_ago  ;;
+  }
+
+
+
+
+
+
+
+
+
+
+
 }
