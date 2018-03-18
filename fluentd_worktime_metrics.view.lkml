@@ -1,5 +1,5 @@
 view: fluentd_worktime_metrics {
-  view_label: "Rescuetime Productivity Metrics"
+  view_label: "1 - Communications and Business"
   sql_table_name: personal_metrics.fluentd_worktime_metrics ;;
 
   dimension: id {
@@ -103,6 +103,7 @@ view: fluentd_worktime_metrics {
 
   measure: design_and_composition_hours {
     label: "Design and Composition Hours"
+    group_label: "Logged Hours"
 
     type: sum
     sql: ${TABLE}.design_and_composition_hours ;;

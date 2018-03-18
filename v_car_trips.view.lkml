@@ -1,23 +1,28 @@
 view: v_car_trips {
   sql_table_name: personal_metrics.v_car_trips ;;
-  view_label: "Car Journeys"
+  view_label: "3 - Travel and Transportation"
 
 
 
 
 
   measure: distance_km {
+    group_label: "Car Journey Metrics"
     type: sum
     sql: ${TABLE}.distance_km ;;
   }
 
   dimension: distance_km_tier {
+    group_label: "Car Journey Details"
+
     type: tier
     tiers: [5,10,20,50,100,250,500]
     sql: ${TABLE}.distance_km ;;
   }
 
   measure: driving_score {
+    group_label: "Car Journey Metrics"
+
     type: average
     sql: ${TABLE}.DrivingScore ;;
   }
@@ -25,6 +30,8 @@ view: v_car_trips {
 
 
   dimension: end_location {
+    group_label: "Car Journey Details"
+
     type: location
     sql_latitude: ${TABLE}.EndLatitude ;;
     sql_longitude: ${TABLE}.EndLongitude ;;
@@ -33,26 +40,36 @@ view: v_car_trips {
 
 
   measure: engine_light_alerts {
+    group_label: "Car Journey Metrics"
+
     type: sum
     sql: ${TABLE}.EngineLightAlerts ;;
   }
 
   measure: fuel_econ_kpl {
+    group_label: "Car Journey Metrics"
+
     type: average
     sql: ${TABLE}.fuel_econ_kpl ;;
   }
 
   measure: fuel_l {
+    group_label: "Car Journey Metrics"
+
     type: sum
     sql: ${TABLE}.fuel_l ;;
   }
 
   measure: hard_acceleration_alerts {
+    group_label: "Car Journey Metrics"
+
     type: sum
     sql: ${TABLE}.HardAccelerationAlerts ;;
   }
 
   measure: hard_brake_alerts {
+    group_label: "Car Journey Metrics"
+
     type: sum
     sql: ${TABLE}.HardBrakeAlerts ;;
   }
@@ -60,6 +77,9 @@ view: v_car_trips {
 
 
   dimension_group: journey_end_date {
+
+    group_label: "Car Journey Details"
+
     type: time
     timeframes: [
       raw,
@@ -74,17 +94,23 @@ view: v_car_trips {
   }
 
   dimension: journey_mins_tier {
+    group_label: "Car Journey Details"
+
     type: tier
     tiers: [5,15,30,60,120,240,360,480,600]
     sql: ${TABLE}.journey_mins ;;
   }
 
   measure: journey_mins {
+    group_label: "Car Journey Metrics"
+
     type: sum
     sql: ${TABLE}.journey_mins ;;
   }
 
   dimension_group: journey_start_date {
+    group_label: "Car Journey Details"
+    hidden: yes
     type: time
     timeframes: [
       raw,
@@ -123,27 +149,37 @@ view: v_car_trips {
   }
 
   measure: speed_alerts {
+    group_label: "Car Journey Metrics"
+
     type: sum
     sql: ${TABLE}.SpeedAlerts ;;
   }
 
   dimension: speed_kph_tier {
+    group_label: "Car Journey Details"
+
     type: tier
     tiers: [5,10,20,40,60,100]
     sql: ${TABLE}.speed_kph ;;
   }
 
   measure: speed_kph {
+    group_label: "Car Journey Metrics"
+
     type: average
     sql: ${TABLE}.speed_kph ;;
   }
 
   dimension: start_address {
+    group_label: "Car Journey Details"
+
     type: string
     sql: ${TABLE}.StartAddress ;;
   }
 
   dimension: start_location {
+    group_label: "Car Journey Details"
+
     type: location
     sql_latitude: ${TABLE}.StartLatitude ;;
     sql_longitude: ${TABLE}.StartLongitude ;;
@@ -152,12 +188,15 @@ view: v_car_trips {
 
 
   dimension: start_weather_conditions {
+    group_label: "Car Journey Details"
+
     type: string
     sql: ${TABLE}.StartWeatherConditions ;;
   }
 
   dimension_group: time_of_day {
     type: time
+    hidden: yes
     timeframes: [
       raw,
       time,
@@ -177,6 +216,8 @@ view: v_car_trips {
   }
 
   measure: count {
+    group_label: "Car Journey Metrics"
+
     type: count
     drill_fields: []
   }

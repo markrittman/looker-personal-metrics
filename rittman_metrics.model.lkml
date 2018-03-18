@@ -63,9 +63,10 @@ explore: date_dim {
 
   join: fluentd_activities {
     type: left_outer
-    sql_on: ${date_dim.date_time} = ${fluentd_activities.end_time} ;;
+    sql_on: ${date_dim.date_minute5} = ${fluentd_activities.date_time_minute5} ;;
     relationship: one_to_many
   }
+
 
 
   join: fluentd_weather {
@@ -74,21 +75,17 @@ explore: date_dim {
     relationship: one_to_many
 
   }
-  join: fluentd_daily_health_stats {
+  join: fluentd_daily_health {
     type: left_outer
-    sql_on: ${date_dim.date_date} = ${fluentd_daily_health_stats.date_date};;
+    sql_on: ${date_dim.date_date} = ${fluentd_daily_health.date_date};;
     relationship: one_to_one
   }
 
-  join: fluentd_weighings {
-    type: left_outer
-    sql_on: ${date_dim.date_date} = ${fluentd_weighings.date_date};;
-    relationship: one_to_many
-  }
+
 
   join: fluentd_strava {
     type: left_outer
-    sql_on: ${date_dim.date_minute15} = ${fluentd_activities.start_minute15};;
+    sql_on: ${date_dim.date_minute15} = ${fluentd_strava.date_time_minute15};;
     relationship: one_to_many
   }
 

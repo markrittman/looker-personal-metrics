@@ -1,8 +1,9 @@
 view: fluentd_mixpanel_podcast_plays {
   sql_table_name: personal_metrics.fluentd_mixpanel_podcast_plays ;;
-  view_label: "Mixpanel Podcast Site Events"
+  view_label: "1 - Communications and Business"
 
   dimension: country {
+    group_label: "Podcast Website Events"
     type: string
     map_layer_name: countries
     sql: ${TABLE}.country ;;
@@ -11,6 +12,7 @@ view: fluentd_mixpanel_podcast_plays {
 
   dimension_group: date {
     type: time
+    hidden: yes
     timeframes: [
      raw,
       time,
@@ -48,48 +50,66 @@ view: fluentd_mixpanel_podcast_plays {
   }
 
   dimension: episode {
+    group_label: "Podcast Website Events"
+
     type: string
     sql: ${TABLE}.episode ;;
   }
 
   dimension: initial_referrer {
+    group_label: "Podcast Website Events"
+
     type: string
     sql: ${TABLE}.initial_referrer ;;
   }
 
   dimension: initial_referring_domain {
+    group_label: "Podcast Website Events"
+
     type: string
     sql: ${TABLE}.initial_referring_domain ;;
   }
 
 
   dimension: os {
+    group_label: "Podcast Website Events"
+
     type: string
     sql: ${TABLE}.os ;;
   }
 
   dimension: referring_domain {
+    group_label: "Podcast Website Events"
+
     type: string
     sql: ${TABLE}.referring_domain ;;
   }
 
   dimension: region {
+    group_label: "Podcast Website Events"
+
     type: string
     sql: ${TABLE}.region ;;
   }
 
   dimension: screen_height {
+    group_label: "Podcast Website Events"
+
     type: number
     sql: ${TABLE}.screen_height ;;
   }
 
   dimension: screen_width {
+    group_label: "Podcast Website Events"
+
     type: number
     sql: ${TABLE}.screen_width ;;
   }
 
   measure: count {
-    label: "Play Count"
+    group_label: "Podcast Event Metrics"
+
+    label: "Podcast Episode Onsite Plays"
     type: count
   }
 }

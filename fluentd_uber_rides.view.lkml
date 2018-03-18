@@ -1,5 +1,5 @@
 view: fluentd_uber_rides {
-  label: "Uber Rides"
+view_label: "3 - Travel and Transportation"
   sql_table_name: personal_metrics.fluentd_uber_rides ;;
 
   dimension: pk {
@@ -11,6 +11,7 @@ view: fluentd_uber_rides {
 
   dimension_group: date {
     type: time
+    hidden: yes
     timeframes: [
       raw,
       time,
@@ -42,7 +43,7 @@ view: fluentd_uber_rides {
   }
 
   dimension: driver_name {
-    group_label: "Vehicle Details"
+    group_label: "Uber Ride Details"
     label: "Driver Name"
     type: string
     sql: ${TABLE}.DriverName ;;
@@ -53,50 +54,51 @@ view: fluentd_uber_rides {
 
 
   dimension: dropoff_location {
+    group_label: "Uber Ride Details"
     type: location
     sql_latitude: ${TABLE}.DropoffLat ;;
     sql_longitude: ${TABLE}.DropoffLong ;;
   }
 
   dimension: pickup_location {
+    group_label: "Uber Ride Details"
+
     type: location
     sql_latitude: ${TABLE}.PickupLat ;;
     sql_longitude: ${TABLE}.PickupLong ;;
   }
 
-
-
   dimension: ride_type {
-    group_label: "Ride Details"
+    group_label: "Uber Ride Details"
     label: "Ride Type"
     type: string
     sql: ${TABLE}.RideType ;;
   }
 
   dimension: surge_multiplier {
-    group_label: "Ride Details"
+    group_label: "Uber Ride Details"
     label: "Driver Name"
     type: string
     sql: ${TABLE}.SurgeMultiplier ;;
   }
 
   dimension: vehicle_license_plate {
-    group_label: "Vehicle Details"
+    group_label: "Uber Ride Details"
     label: "Vehicle License Plate"
     type: string
     sql: ${TABLE}.VehicleLicensePlate ;;
   }
 
   dimension: vehicle_make_model {
-    group_label: "Vehicle Details"
+    group_label: "Uber Ride Details"
     label: "Vehicle Make & Model"
     type: string
     sql: ${TABLE}.VehicleMakeModel ;;
   }
 
   measure: count {
-    group_label: "Ride Details"
-    label: "Ride Count"
+    group_label: "Uber Ride Metrics"
+    label: "Uber Rides Count"
     type: count
   }
 }

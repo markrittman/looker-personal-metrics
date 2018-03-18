@@ -1,23 +1,30 @@
 view: fluentd_google_analytics {
   sql_table_name: personal_metrics.fluentd_google_analytics ;;
-  view_label: "GA Site Analytics"
+  view_label: "1 - Communications and Business"
 
   measure: avg_page_load_time {
+    group_label: "Site Activity Metrics"
     type: average
     sql: ${TABLE}.avg_page_load_time ;;
   }
 
   measure: avg_session_duration {
+    group_label: "Site Activity Metrics"
+
     type: average
     sql: ${TABLE}.avg_session_duration ;;
   }
 
   measure: bounce_count {
+    group_label: "Site Activity Metrics"
+
     type: sum
     sql: ${TABLE}.bounce_count ;;
   }
 
   dimension: country {
+    group_label: "Website Visitors"
+
     type: string
     map_layer_name: countries
     sql: ${TABLE}.country ;;
@@ -32,6 +39,7 @@ view: fluentd_google_analytics {
 
   dimension_group: date {
     type: time
+    hidden: yes
     timeframes: [
      raw,
       time,
@@ -63,21 +71,29 @@ view: fluentd_google_analytics {
   }
 
   measure: entrance_count {
+    group_label: "Site Activity Metrics"
+
     type: sum
     sql: ${TABLE}.entrance_count ;;
   }
 
   measure: exit_count {
+    group_label: "Site Activity Metrics"
+
     type: sum
     sql: ${TABLE}.exit_count ;;
   }
 
   dimension: full_referrer {
+    group_label: "Website Visitors"
+
     type: string
     sql: ${TABLE}.full_referrer ;;
   }
 
   dimension: visitor_location {
+    group_label: "Website Visitors"
+
     type: location
     sql_latitude: ${TABLE}.latitude ;;
     sql_longitude: ${TABLE}.longitude ;;
@@ -86,29 +102,34 @@ view: fluentd_google_analytics {
 
 
   dimension: page_title {
+    group_label: "Website Visitors"
+
     type: string
     sql: ${TABLE}.page_title ;;
     drill_fields: [country]
   }
 
   measure: pageview_count {
+    group_label: "Site Activity Metrics"
+
     type: sum
     sql: ${TABLE}.pageview_count ;;
   }
 
   dimension: site {
+    group_label: "Website Visitors"
+
     type: string
     sql: ${TABLE}.site ;;
     drill_fields: [page_title]
   }
 
   measure: visitor_count {
+    group_label: "Site Activity Metrics"
+
     type: sum
     sql: ${TABLE}.visitor_count ;;
   }
 
-  measure: count {
-    type: count
-    drill_fields: []
-  }
+
 }

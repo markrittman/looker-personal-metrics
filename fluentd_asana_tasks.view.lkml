@@ -1,6 +1,6 @@
 view: fluentd_asana_tasks {
   sql_table_name: personal_metrics.fluentd_asana_tasks ;;
-  view_label: "Asana Tasks"
+  view_label: "1 - Communications and Business"
 
   dimension: id {
     primary_key: yes
@@ -14,21 +14,28 @@ view: fluentd_asana_tasks {
 
 
   dimension: assignee_name {
+    group_label: "Task Details"
     type: string
     sql: ${TABLE}.assignee_name ;;
   }
 
   dimension: assignee_status {
+    group_label: "Task Details"
+
     type: string
     sql: ${TABLE}.assignee_status ;;
   }
 
   dimension: completed {
+    group_label: "Task Details"
+
     type: yesno
     sql: ${TABLE}.completed ;;
   }
 
   dimension_group: completed_date {
+    group_label: "Task Details"
+
     type: time
     timeframes: [
       raw,
@@ -62,6 +69,8 @@ view: fluentd_asana_tasks {
 
   dimension_group: date_time {
     label: "Task Created Date"
+    group_label: "Task Details"
+
     type: time
     timeframes: [
       raw,
@@ -96,17 +105,23 @@ view: fluentd_asana_tasks {
 
 
   dimension: custom_task_category {
+    group_label: "Task Details"
+
     type: string
     sql: ${TABLE}.custom_task_category ;;
   }
 
   dimension: custom_task_source {
+    group_label: "Task Details"
+
     type: string
     sql: ${TABLE}.custom_task_source ;;
     drill_fields: [name,project_name]
   }
 
   dimension_group: due_at_date {
+    group_label: "Task Details"
+
     type: time
     timeframes: [
       raw,
@@ -139,6 +154,8 @@ view: fluentd_asana_tasks {
   }
 
   dimension_group: due_on_date {
+    group_label: "Task Details"
+
     type: time
     timeframes: [
       raw,
@@ -171,11 +188,15 @@ view: fluentd_asana_tasks {
   }
 
   dimension: hearted {
+    group_label: "Task Details"
+
     type: yesno
     sql: ${TABLE}.hearted ;;
   }
 
   dimension_group: modified_date {
+    group_label: "Task Details"
+
     type: time
     timeframes: [
      raw,
@@ -208,12 +229,16 @@ view: fluentd_asana_tasks {
   }
 
   dimension: name {
+    group_label: "Task Details"
+
     label: "Task Name"
     type: string
     sql: ${TABLE}.name ;;
   }
 
   dimension: notes {
+    group_label: "Task Details"
+
     type: string
     sql: ${TABLE}.notes ;;
   }
@@ -223,12 +248,16 @@ view: fluentd_asana_tasks {
 
 
   dimension: project_name {
+    group_label: "Task Details"
+
     type: string
     sql: ${TABLE}.project_name ;;
     drill_fields: [name]
   }
 
   dimension: project_owner {
+    group_label: "Task Details"
+
     type: string
     sql: ${TABLE}.project_owner ;;
   }
@@ -236,13 +265,17 @@ view: fluentd_asana_tasks {
 
 
   dimension: workspace_name {
+    group_label: "Task Details"
+
     type: string
     sql: ${TABLE}.workspace_name ;;
     drill_fields: [name,project_name]
   }
 
   measure: count {
-    label: "Task Count"
+    group_label: "Task Metrics"
+
+    label: "Tasks Count"
     type: count
     drill_fields: [id, project_name, assignee_name, name, workspace_name]
   }

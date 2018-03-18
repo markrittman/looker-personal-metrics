@@ -1,6 +1,6 @@
 view: fluentd_geolocation {
   sql_table_name: personal_metrics.fluentd_geolocation ;;
-  view_label: "Geotracking and Locations"
+  view_label: "5 - Locations Visited"
 
   measure: altitude_m {
     type: average

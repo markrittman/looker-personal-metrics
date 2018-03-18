@@ -1,6 +1,6 @@
 view: fluentd_log_enhanced_std {
   sql_table_name: personal_metrics.fluentd_log_enhanced_std ;;
-  view_label: "SmartThings Devices"
+  view_label: "6 - Smart Devices"
 
   dimension_group: date {
     type: time

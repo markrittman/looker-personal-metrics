@@ -41,8 +41,5 @@ view: date_dim {
     sql: ${TABLE}.date_time ;;
   }
 
-  measure: count {
-    type: count
-    drill_fields: []
-  }
+
 }
