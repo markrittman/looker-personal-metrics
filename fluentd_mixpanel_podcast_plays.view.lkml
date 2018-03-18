@@ -54,6 +54,7 @@ view: fluentd_mixpanel_podcast_plays {
 
     type: string
     sql: ${TABLE}.episode ;;
+    drill_fields: [country]
   }
 
   dimension: initial_referrer {
