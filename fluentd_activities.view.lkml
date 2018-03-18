@@ -65,6 +65,14 @@ view: fluentd_activities {
     sql: ${TABLE}.date_time ;;
   }
 
+  dimension: pk {
+    primary_key: yes
+    hidden: yes
+    sql: ${TABLE}.date_time ;;
+
+  }
+
+
   measure: steps {
     group_label: "Exercise Activity Metrics"
 
@@ -73,6 +81,13 @@ view: fluentd_activities {
     sql: ${TABLE}.steps ;;
   }
 
+  measure: count {
+    group_label: "Exercise Activity Metrics"
+    label: "Walks"
+
+    type: count
+
+  }
 
 
   dimension: type {

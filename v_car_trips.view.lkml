@@ -8,6 +8,8 @@ view: v_car_trips {
 
   measure: distance_km {
     group_label: "Car Journey Metrics"
+    value_format: "0.00"
+
     type: sum
     sql: ${TABLE}.distance_km ;;
   }
@@ -22,6 +24,7 @@ view: v_car_trips {
 
   measure: driving_score {
     group_label: "Car Journey Metrics"
+    value_format: "0.00"
 
     type: average
     sql: ${TABLE}.DrivingScore ;;
@@ -48,6 +51,7 @@ view: v_car_trips {
 
   measure: fuel_econ_kpl {
     group_label: "Car Journey Metrics"
+    value_format: "0.00"
 
     type: average
     sql: ${TABLE}.fuel_econ_kpl ;;
@@ -55,6 +59,7 @@ view: v_car_trips {
 
   measure: fuel_l {
     group_label: "Car Journey Metrics"
+    value_format: "0.00"
 
     type: sum
     sql: ${TABLE}.fuel_l ;;
@@ -103,12 +108,12 @@ view: v_car_trips {
 
   measure: journey_mins {
     group_label: "Car Journey Metrics"
-
+    value_format: "0.00"
     type: sum
     sql: ${TABLE}.journey_mins ;;
   }
 
-  dimension_group: journey_start_date {
+  dimension_group: date_time {
     group_label: "Car Journey Details"
     hidden: yes
     type: time
@@ -165,7 +170,7 @@ view: v_car_trips {
 
   measure: speed_kph {
     group_label: "Car Journey Metrics"
-
+    value_format: "0.00"
     type: average
     sql: ${TABLE}.speed_kph ;;
   }
@@ -217,6 +222,7 @@ view: v_car_trips {
 
   measure: count {
     group_label: "Car Journey Metrics"
+    label: "Car Trips"
 
     type: count
     drill_fields: []

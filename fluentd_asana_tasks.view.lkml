@@ -35,69 +35,23 @@ view: fluentd_asana_tasks {
 
   dimension_group: completed_date {
     group_label: "Task Details"
+    label: "Completed"
 
     type: time
     timeframes: [
-      raw,
-      time,
-      hour,
-      hour3,
-      hour4,
-      hour6,
-      hour12,
-      hour_of_day,
-      time_of_day,
-      minute,
-      minute5,
-      minute10,
-      minute15,
-      minute30,
-      day_of_week,
-      day_of_month,
-      day_of_year,
-      date,
-      week,
-      week_of_year,
-      month,
-      month_name,
-      month_num,
-      quarter,
-      year
+      date
     ]
     sql: ${TABLE}.completed_at ;;
   }
 
   dimension_group: date_time {
-    label: "Task Created Date"
+    label: "Task Created"
     group_label: "Task Details"
 
     type: time
     timeframes: [
-      raw,
-      time,
-      hour,
-      hour3,
-      hour4,
-      hour6,
-      hour12,
-      hour_of_day,
-      time_of_day,
-      minute,
-      minute5,
-      minute10,
-      minute15,
-      minute30,
-      day_of_week,
-      day_of_month,
-      day_of_year,
-      date,
-      week,
-      week_of_year,
-      month,
-      month_name,
-      month_num,
-      quarter,
-      year
+
+      date
     ]
     sql: ${TABLE}.created_at ;;
   }
@@ -121,68 +75,23 @@ view: fluentd_asana_tasks {
 
   dimension_group: due_at_date {
     group_label: "Task Details"
+    label: "Due At"
 
     type: time
     timeframes: [
-      raw,
-      time,
-      hour,
-      hour3,
-      hour4,
-      hour6,
-      hour12,
-      hour_of_day,
-      time_of_day,
-      minute,
-      minute5,
-      minute10,
-      minute15,
-      minute30,
-      day_of_week,
-      day_of_month,
-      day_of_year,
-      date,
-      week,
-      week_of_year,
-      month,
-      month_name,
-      month_num,
-      quarter,
-      year
+    date
     ]
     sql: ${TABLE}.due_at ;;
   }
 
   dimension_group: due_on_date {
     group_label: "Task Details"
+    label: "Due On"
 
     type: time
     timeframes: [
-      raw,
-      time,
-      hour,
-      hour3,
-      hour4,
-      hour6,
-      hour12,
-      hour_of_day,
-      time_of_day,
-      minute,
-      minute5,
-      minute10,
-      minute15,
-      minute30,
-      day_of_week,
-      day_of_month,
-      day_of_year,
-      date,
-      week,
-      week_of_year,
-      month,
-      month_name,
-      month_num,
-      quarter,
-      year
+
+      date
     ]
     sql: ${TABLE}.due_on ;;
   }
@@ -196,34 +105,12 @@ view: fluentd_asana_tasks {
 
   dimension_group: modified_date {
     group_label: "Task Details"
+    label: "Modified"
 
     type: time
     timeframes: [
-     raw,
-      time,
-      hour,
-      hour3,
-      hour4,
-      hour6,
-      hour12,
-      hour_of_day,
-      time_of_day,
-      minute,
-      minute5,
-      minute10,
-      minute15,
-      minute30,
-      day_of_week,
-      day_of_month,
-      day_of_year,
-      date,
-      week,
-      week_of_year,
-      month,
-      month_name,
-      month_num,
-      quarter,
-      year
+
+      date
     ]
     sql: ${TABLE}.modified_at ;;
   }

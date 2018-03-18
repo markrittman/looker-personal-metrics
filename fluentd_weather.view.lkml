@@ -79,6 +79,7 @@ view: fluentd_weather {
 
     label: "Avg Wind Speed Kph"
     type: average
+    value_format: "0"
     sql: ${TABLE}.wind_speed_kph  ;;
     }
 
@@ -86,6 +87,7 @@ view: fluentd_weather {
       group_label: "Local Weather Metrics"
 
       label: "Avg Temp C"
+      value_format: "0"
       type: average
       sql: ${TABLE}.wind_speed_kph  ;;
   }
@@ -94,6 +96,8 @@ view: fluentd_weather {
     group_label: "Local Weather Metrics"
 
     label: "Avg Wind Speed Kph (Month Ago)"
+    value_format: "0"
+
     type: average
     sql: ${TABLE}.wind_speed_kph_month_ago  ;;
   }
@@ -102,6 +106,8 @@ view: fluentd_weather {
     group_label: "Local Weather Metrics"
 
     label: "Avg Temp C (Month Ago)"
+    value_format: "0"
+
     type: average
     sql: ${TABLE}.wind_speed_kph_month_ago  ;;
   }
@@ -110,6 +116,8 @@ view: fluentd_weather {
     group_label: "Local Weather Metrics"
 
     label: "Avg Wind Speed Kph (Three Months Ago)"
+    value_format: "0"
+
     type: average
     sql: ${TABLE}.wind_speed_kph_3month_ago  ;;
   }
@@ -118,6 +126,8 @@ view: fluentd_weather {
     group_label: "Local Weather Metrics"
 
     label: "Avg Temp C (Three Months Ago)"
+    value_format: "0"
+
     type: average
     sql: ${TABLE}.wind_speed_kph_3month_ago  ;;
   }
@@ -126,6 +136,8 @@ view: fluentd_weather {
     group_label: "Local Weather Metrics"
 
     label: "Avg Wind Speed Kph (Six Months Ago)"
+    value_format: "0"
+
     type: average
     sql: ${TABLE}.wind_speed_kph_6month_ago  ;;
   }
@@ -134,6 +146,8 @@ view: fluentd_weather {
     group_label: "Local Weather Metrics"
 
     label: "Avg Temp C (Six Months Ago)"
+    value_format: "0"
+
     type: average
     sql: ${TABLE}.wind_speed_kph_6month_ago  ;;
   }

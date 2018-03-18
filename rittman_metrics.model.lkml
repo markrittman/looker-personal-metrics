@@ -19,7 +19,7 @@ include: "*.dashboard.lookml"  # include all dashboards in this project
 explore: date_dim {
 
   case_sensitive: no
-  label: "Rittman Metrics"
+  label: "Data Warehouse"
   join: fluentd_monzo {
     type: left_outer
     sql_on: ${date_dim.date_date} = ${fluentd_monzo.created_date} ;;
@@ -37,7 +37,7 @@ explore: date_dim {
   }
   join: v_car_trips {
     type: left_outer
-    sql_on: ${date_dim.date_minute5} = ${v_car_trips.journey_start_date_minute5} ;;
+    sql_on: ${date_dim.date_minute5} = ${v_car_trips.date_time_minute5} ;;
     relationship: one_to_many
   }
   join: fluentd_communications_std {
@@ -53,7 +53,7 @@ explore: date_dim {
   join: fluentd_worktime_metrics {
     type: left_outer
     sql_on: ${date_dim.date_date} = ${fluentd_worktime_metrics.date_date} ;;
-    relationship: many_to_many
+    relationship: one_to_one
   }
   join: fluentd_mixpanel_podcast_plays {
     type: left_outer

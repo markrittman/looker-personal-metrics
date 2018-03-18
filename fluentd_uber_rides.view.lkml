@@ -98,7 +98,7 @@ view_label: "3 - Travel and Transportation"
 
   measure: count {
     group_label: "Uber Ride Metrics"
-    label: "Uber Rides Count"
+    label: "Uber Trips"
     type: count
   }
 }

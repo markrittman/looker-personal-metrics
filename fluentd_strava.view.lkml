@@ -8,6 +8,12 @@ view: fluentd_strava {
     hidden: yes
     sql: ${TABLE}.id ;;
   }
+  measure: count {
+    group_label: "Cycle Workout Metrics"
+
+    label: "Cycle Workouts"
+    type: count
+  }
 
   measure: achievement_count {
     group_label: "Cycle Workout Metrics"
@@ -279,6 +285,8 @@ view: fluentd_strava {
     type: string
     sql: ${TABLE}.type ;;
   }
+
+
 
 
 
