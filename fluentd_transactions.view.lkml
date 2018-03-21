@@ -10,14 +10,18 @@ view: fluentd_transactions {
 
   measure: total_amount {
     group_label: "All Transactions"
+    value_format: "0.00"
     type: sum
     sql: ${TABLE}.amount ;;
+    drill_fields: [description,date_date,date_month,date_week]
   }
 
   measure: avg_amount {
     group_label: "All Transactions"
     type: average
+    value_format: "0.00"
     sql: ${TABLE}.amount ;;
+    drill_fields: [description,date_date,date_month,date_week]
   }
 
   dimension: pk {

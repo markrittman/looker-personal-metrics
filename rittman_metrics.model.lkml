@@ -20,9 +20,9 @@ explore: date_dim {
 
   case_sensitive: no
   label: "Data Warehouse"
-  join: fluentd_monzo {
+  join: fluentd_transactions {
     type: left_outer
-    sql_on: ${date_dim.date_date} = ${fluentd_monzo.created_date} ;;
+    sql_on: ${date_dim.date_minute5} = ${fluentd_transactions.date_minute5} ;;
     relationship: many_to_many
   }
   join: fluentd_log_enhanced_std {
