@@ -45,6 +45,10 @@ explore: date_dim {
     sql_on: ${date_dim.date_minute5} = ${fluentd_communications_std.date_minute5} ;;
     relationship: one_to_many
   }
+
+
+
+
   join: fluentd_google_analytics {
     type: left_outer
     sql_on: ${date_dim.date_minute5} = ${fluentd_google_analytics.date_minute5} ;;

@@ -3,8 +3,8 @@ view: fluentd_communications_std {
   view_label: "1 - Communications and Business"
 
   dimension: categoryname {
-    group_label: "Communications"
-    label: "Categorization"
+    group_label: "Messages"
+    label: "Message Categorisation"
     type: string
     sql: ${TABLE}.categoryname ;;
   }
@@ -51,7 +51,7 @@ view: fluentd_communications_std {
 }
 
   dimension: entityname {
-    group_label: "Communications"
+    group_label: "Messages"
 
     label: "Entities"
     type: string
@@ -59,34 +59,33 @@ view: fluentd_communications_std {
   }
 
   dimension: message_sentiment {
-    group_label: "Communications"
+    group_label: "Messages"
 
-    label: "Sentiment"
+    label: "Sentiment Analysis Label"
     type: string
     sql: ${TABLE}.message_sentiment ;;
   }
 
   dimension: post_author {
-    group_label: "Communications"
-
-    label: "Message From"
+    group_label: "Messages"
+    label: "Author"
     type: string
     drill_fields: [type, post_title]
     sql: ${TABLE}.post_author ;;
   }
 
   dimension: post_body {
-    group_label: "Communications"
+    group_label: "Messages"
 
-    label: "Message Content"
+    label: "Message"
     type: string
     sql: ${TABLE}.post_body ;;
   }
 
   dimension: post_recipient {
-    group_label: "Communications"
+    group_label: "Messages"
 
-    label: "Message To"
+    label: "Recipient"
     type: string
     drill_fields: [type, post_title]
 
@@ -94,40 +93,25 @@ view: fluentd_communications_std {
   }
 
   dimension: post_title {
-    group_label: "Communications"
+    group_label: "Messages"
 
-    label: "Message Title"
+    label: "Title"
     type: string
     sql: ${TABLE}.post_title ;;
   }
 
   dimension: post_url {
-    group_label: "Communications"
+    group_label: "Messages"
 
-    label: "Message URL"
+    label: "URL"
     type: string
     sql: ${TABLE}.post_url ;;
   }
 
-  measure: sentimentmagnitude {
-    group_label: "Communications Metrics"
 
-    label: "Sentiment Magnitude"
-    type: number
-    sql: round(${TABLE}.sentimentmagnitude,2) ;;
-  }
-
-  measure: sentimentscore {
-    group_label: "Communications Metrics"
-
-    label: "Sentiment Score"
-    value_format: "0.00"
-    type: average
-    sql: round(${TABLE}.sentimentscore,2) ;;
-  }
 
   dimension: type {
-    group_label: "Communications"
+    group_label: "Messages"
 
     label: "Message Type"
     type: string
@@ -135,11 +119,125 @@ view: fluentd_communications_std {
     sql: ${TABLE}.type ;;
   }
 
+  dimension: post_recipient_linkedin_bio {
+    group_label: "People and Companies"
+    label: "Recipient LinkedIn Bio"
+
+    type: string
+    sql: ${TABLE}.type ;;
+  }
+
+  dimension: post_author_linkedin_bio {
+    group_label: "People and Companies"
+    label: "Author LinkedIn Bio"
+
+    type: string
+    sql: ${TABLE}.type ;;
+  }
+
+  dimension: post_author_Associated_Company {
+    group_label: "People and Companies"
+    label: "Author Company"
+
+    type: string
+    sql: ${TABLE}.type ;;
+  }
+
+  dimension: post_recipient_Associated_Company {
+    group_label: "People and Companies"
+    label: "Recipient Company"
+    type: string
+    sql: ${TABLE}.type ;;
+  }
+  dimension: post_author_Job_Title {
+    group_label: "People and Companies"
+    label: "Author Job Title"
+    type: string
+    sql: ${TABLE}.type ;;
+  }
+
+  dimension: post_recipient_Job_Title {
+    group_label: "People and Companies"
+    label: "Recipient Company"
+    type: string
+    sql: ${TABLE}.type ;;
+  }
+
+
+
+
+
   measure: count {
-    group_label: "Communications Metrics"
+    group_label: "Message Metrics"
 
     label: "Count of Messages"
     type: count
     drill_fields: [entityname, categoryname]
   }
+
+  measure: sentimentmagnitude {
+    group_label: "Message Metrics"
+
+    label: "Sentiment Magnitude"
+    value_format: "0.00"
+    type: number
+    sql: round(${TABLE}.sentimentmagnitude,2) ;;
+  }
+
+  measure: sentimentscore {
+    group_label: "Message Metrics"
+
+    label: "Sentiment Score"
+    value_format: "0.00"
+    type: average
+    sql: round(${TABLE}.sentimentscore,2) ;;
+  }
+
+  measure: post_recipient_klout_score {
+    group_label: "Message Metrics"
+    label: "Message Recipient Klout Score"
+    type: average
+    sql: ${TABLE}.type ;;
+  }
+  measure: post_author_klout_score {
+    group_label: "Message Metrics"
+    label: "Message Author Klout Score"
+
+    type: average
+    sql: ${TABLE}.type ;;
+  }
+
+  measure: post_author_Follower_Count {
+    group_label: "Message Metrics"
+    label: "Post Author Follower Count"
+
+    type: average
+    sql: ${TABLE}.type ;;
+  }
+
+  measure: post_recipient_Follower_Count {
+    group_label: "Message Metrics"
+    label: "Post Recipient Follower Count"
+
+    type: average
+    sql: ${TABLE}.type ;;
+  }
+  measure: post_recipient_LinkedIn_Connections {
+    group_label: "Message Metrics"
+    label: "Post Recipient LinkedIn Connection Count"
+
+    type: average
+    sql: ${TABLE}.type ;;
+  }
+
+  measure: post_author_LinkedIn_Connections {
+    group_label: "Message Metrics"
+    label: "Post Author LinkedIn Connection Count"
+
+    type: average
+    sql: ${TABLE}.type ;;
+  }
+
+
+
 }
