@@ -124,7 +124,7 @@ view: fluentd_communications_std {
     label: "Recipient LinkedIn Bio"
 
     type: string
-    sql: ${TABLE}.type ;;
+    sql: ${TABLE}.post_recipient_linkedin_bio ;;
   }
 
   dimension: post_author_linkedin_bio {
@@ -132,7 +132,7 @@ view: fluentd_communications_std {
     label: "Author LinkedIn Bio"
 
     type: string
-    sql: ${TABLE}.type ;;
+    sql: ${TABLE}.post_author_linkedin_bio ;;
   }
 
   dimension: post_author_Associated_Company {
@@ -140,27 +140,27 @@ view: fluentd_communications_std {
     label: "Author Company"
 
     type: string
-    sql: ${TABLE}.type ;;
+    sql: ${TABLE}.post_author_Associated_Company ;;
   }
 
   dimension: post_recipient_Associated_Company {
     group_label: "People and Companies"
     label: "Recipient Company"
     type: string
-    sql: ${TABLE}.type ;;
+    sql: ${TABLE}.post_recipient_Associated_Company ;;
   }
   dimension: post_author_Job_Title {
     group_label: "People and Companies"
     label: "Author Job Title"
     type: string
-    sql: ${TABLE}.type ;;
+    sql: ${TABLE}.post_author_Job_Title ;;
   }
 
   dimension: post_recipient_Job_Title {
     group_label: "People and Companies"
     label: "Recipient Company"
     type: string
-    sql: ${TABLE}.type ;;
+    sql: ${TABLE}.post_recipient_Job_Title ;;
   }
 
 
@@ -196,15 +196,16 @@ view: fluentd_communications_std {
   measure: post_recipient_klout_score {
     group_label: "Message Metrics"
     label: "Message Recipient Klout Score"
+    value_format: "0.0"
     type: average
-    sql: ${TABLE}.type ;;
+    sql: ${TABLE}.post_recipient_klout_score ;;
   }
   measure: post_author_klout_score {
     group_label: "Message Metrics"
     label: "Message Author Klout Score"
-
+    value_format: "0.0"
     type: average
-    sql: ${TABLE}.type ;;
+    sql: ${TABLE}.post_author_klout_score ;;
   }
 
   measure: post_author_Follower_Count {
@@ -212,22 +213,23 @@ view: fluentd_communications_std {
     label: "Post Author Follower Count"
 
     type: average
-    sql: ${TABLE}.type ;;
+    sql: ${TABLE}.post_author_follower_count ;;
   }
 
   measure: post_recipient_Follower_Count {
     group_label: "Message Metrics"
     label: "Post Recipient Follower Count"
+    value_format: "0.0"
 
     type: average
-    sql: ${TABLE}.type ;;
+    sql: ${TABLE}.post_recipient_follower_count ;;
   }
   measure: post_recipient_LinkedIn_Connections {
     group_label: "Message Metrics"
     label: "Post Recipient LinkedIn Connection Count"
 
     type: average
-    sql: ${TABLE}.type ;;
+    sql: ${TABLE}.post_recipient_LinkedIn_Connections ;;
   }
 
   measure: post_author_LinkedIn_Connections {
@@ -235,7 +237,7 @@ view: fluentd_communications_std {
     label: "Post Author LinkedIn Connection Count"
 
     type: average
-    sql: ${TABLE}.type ;;
+    sql: ${TABLE}.post_author_LinkedIn_Connections ;;
   }
 
 
