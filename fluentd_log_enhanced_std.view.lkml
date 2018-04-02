@@ -36,7 +36,7 @@ view: fluentd_log_enhanced_std {
   }
 
   dimension_group: start_date_time {
-    group_label: "Start and End Dates/Times"
+    group_label: "Date"
 
     label: "Start"
     type: time
@@ -70,10 +70,7 @@ view: fluentd_log_enhanced_std {
     sql: ${TABLE}.start_date_time ;;
   }
 
-  dimension: event_timestamp {
-    type: string
-    sql: ${TABLE}.start_date_time ;;
-  }
+
 
   dimension_group: end_date_time {
     group_label: "Date"
@@ -116,6 +113,7 @@ view: fluentd_log_enhanced_std {
   }
 
   dimension: device {
+
     group_label: "Smart Device"
     type: string
     sql: ${TABLE}.device ;;
@@ -126,7 +124,7 @@ view: fluentd_log_enhanced_std {
     group_label: "Smart Device"
     type: string
     sql: ${TABLE}.device_type ;;
-    drill_fields: [device_type]
+    drill_fields: [device]
   }
 
   dimension: metric {
@@ -139,7 +137,7 @@ view: fluentd_log_enhanced_std {
 
 
   dimension: room {
-    group_label: "Location"
+    group_label: "Smart Device"
     type: string
     sql: ${TABLE}.room ;;
     drill_fields: [device_type,device]
@@ -156,22 +154,30 @@ view: fluentd_log_enhanced_std {
   }
 
 
-measure: total_state_duration_seconds {
+measure: total_duration_seconds {
+  group_label: "Duration"
   type: sum
   sql: ${TABLE}.state_duration_seconds ;;
 }
 
-  measure: avg_state_duration_seconds {
+  measure: avg_duration_seconds {
+    group_label: "Duration"
+
     type: average
     sql: ${TABLE}.state_duration_seconds ;;
 }
 
   measure: avg_state_value {
+    group_label: "Value"
+
     type: average
     sql: ${TABLE}.value ;;
   }
 
+
+
   measure: max_state_value {
+    group_label: "Value"
     type: max
     sql: ${TABLE}.value ;;
   }

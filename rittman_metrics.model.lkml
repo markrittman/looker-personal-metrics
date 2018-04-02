@@ -2,20 +2,6 @@ connection: "rittman_bigquery"
 include: "*.view.lkml"         # include all views in this project
 include: "*.dashboard.lookml"  # include all dashboards in this project
 
-# # Select the views that should be a part of this model,
-# # and define the joins that connect them together.
-#
-# explore: order_items {
-#   join: orders {
-#     relationship: many_to_one
-#     sql_on: ${orders.id} = ${order_items.order_id} ;;
-#   }
-#
-#   join: users {
-#     relationship: many_to_one
-#     sql_on: ${users.id} = ${orders.user_id} ;;
-#   }
-# }
 explore: date_dim {
 
   case_sensitive: no
@@ -25,9 +11,14 @@ explore: date_dim {
     sql_on: ${date_dim.date_minute5} = ${fluentd_transactions.date_minute5} ;;
     relationship: many_to_many
   }
-  join: fluentd_log_enhanced_std {
+  join: smartthings_readings {
     type: left_outer
-    sql_on: ${date_dim.date_minute5} = ${fluentd_log_enhanced_std.date_minute5} ;;
+    sql_on: ${date_dim.date_minute5} = ${smartthings_readings.date_minute5} ;;
+    relationship: one_to_many
+  }
+  join: device_event_end_and_timespan {
+    type: left_outer
+    sql_on: ${smartthings_readings.date_time} = ${device_event_end_and_timespan.date_time} ;;
     relationship: one_to_many
   }
   join: fluentd_uber_rides {

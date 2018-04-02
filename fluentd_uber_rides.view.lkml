@@ -68,6 +68,14 @@ view_label: "3 - Travel and Transportation"
     sql_longitude: ${TABLE}.PickupLong ;;
   }
 
+  dimension: distance {
+    group_label: "Uber Ride Details"
+    type: distance
+    start_location_field: pickup_location
+    end_location_field: dropoff_location
+    units: kilometers
+  }
+
   dimension: ride_type {
     group_label: "Uber Ride Details"
     label: "Ride Type"
@@ -77,8 +85,8 @@ view_label: "3 - Travel and Transportation"
 
   dimension: surge_multiplier {
     group_label: "Uber Ride Details"
-    label: "Driver Name"
-    type: string
+    label: "Surge Multiplier"
+    type: number
     sql: ${TABLE}.SurgeMultiplier ;;
   }
 
