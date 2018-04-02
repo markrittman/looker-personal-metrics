@@ -18,8 +18,10 @@ explore: date_dim {
   }
   join: device_event_end_and_timespan {
     type: left_outer
-    sql_on: ${smartthings_readings.date_time} = ${device_event_end_and_timespan.date_time} ;;
-    relationship: one_to_many
+    sql_on: ${smartthings_readings.date_time} = ${device_event_end_and_timespan.date_time} and
+            ${smartthings_readings.device} = ${device_event_end_and_timespan.device} and
+            ${smartthings_readings.metric} = ${device_event_end_and_timespan.metric};;
+    relationship: one_to_one
   }
   join: fluentd_uber_rides {
     type: left_outer

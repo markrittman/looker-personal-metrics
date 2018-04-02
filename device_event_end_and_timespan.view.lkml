@@ -4,10 +4,11 @@ view: device_event_end_and_timespan {
   sql: SELECT
   date_time as date_time,
   device as device,
+  metric as metric,
   LEAD(date_time, 1) OVER (PARTITION BY device, metric ORDER BY date_time) as end_date_time,
   timestamp_DIFF(LEAD(date_time, 1) OVER (PARTITION BY device, metric ORDER BY date_time),date_time,second) as value_duration_seconds
 from `aerial-vehicle-148023.personal_metrics.smartthings_readings`
-order by 2,1;;
+order by 2,3,1;;
 }
 
   dimension: date_time {
@@ -16,6 +17,17 @@ order by 2,1;;
     sql: ${TABLE}.date_time ;;
   }
 
+  dimension: device {
+    type: string
+    hidden: yes
+    sql: ${TABLE}.device ;;
+  }
+
+  dimension: metric {
+    type: string
+    hidden: yes
+    sql: ${TABLE}.metric ;;
+  }
 
   dimension_group: end_date_time {
     group_label: "End Date"

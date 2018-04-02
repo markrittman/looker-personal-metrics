@@ -1,5 +1,5 @@
 view: smartthings_readings {
-  view_label: "6. Smart Devices"
+  view_label: "6 - Smart Devices"
   sql_table_name: personal_metrics.smartthings_readings ;;
 
   dimension: pk {
